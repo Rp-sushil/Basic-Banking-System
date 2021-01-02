@@ -1,0 +1,17 @@
+GET http://localhost:5050/customers
+###
+GET http://localhost:5050/customers/1
+###
+GET  http://localhost:5050/transfers
+
+###
+PATCH http://localhost:5050/transfers
+Content-Type: application/json
+
+{
+    "to": 2, 
+    "from": 1,
+    "amount": 500
+}
+
+
