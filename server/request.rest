@@ -9,7 +9,7 @@ PATCH http://localhost:5050/transfers
 Content-Type: application/json
 
 {
-    "to": 2, 
+    "to": 3, 
     "from": 1,
     "amount": 500
 }

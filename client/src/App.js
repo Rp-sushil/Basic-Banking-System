@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -28,6 +28,9 @@ function App() {
           </Route>
           <Route path="/transfers">
             <Transfers />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </div>

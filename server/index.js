@@ -25,7 +25,7 @@ client.connect((err) => {
 });
 
 // id_counter
-var count = 5;
+var count = 7;
 
 // Routes
 app.get("/customers", async (req, res) => {
@@ -55,10 +55,10 @@ app.get("/transfers", async (req, res) => {
     const {
       rows,
     } = await client.query(`SELECT table1."paidfrom", table2."paidto", table1."amount", table1."transaction_at" FROM
-    (SELECT customers."name" as paidFrom, transfers."amount", transfers."transaction_at" FROM transfers JOIN customers ON customers."id"=transfers."paidFrom") as table1
+    (SELECT transfers."id", customers."name" as paidFrom, transfers."amount", transfers."transaction_at" FROM transfers JOIN customers ON customers."id"=transfers."paidFrom") as table1
     INNER JOIN
-    (SELECT customers."name" as paidTo, transfers."amount", transfers."transaction_at" FROM transfers JOIN customers ON customers."id"=transfers."paidTo") as table2 ON
-    table1."amount"=table2."amount"
+    (SELECT transfers."id", customers."name" as paidTo, transfers."amount", transfers."transaction_at" FROM transfers JOIN customers ON customers."id"=transfers."paidTo") as table2 ON
+    table1."id"=table2."id"
     `);
     return res.json(rows);
   } catch (error) {
