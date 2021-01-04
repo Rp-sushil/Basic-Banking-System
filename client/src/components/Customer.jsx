@@ -20,13 +20,22 @@ export default function Customer({ moneyTransfered, setMoneyTransfered }) {
   }, [customerId, moneyTransfered]);
 
   return (
-    <div className="customer">
+    <div className="customer-details-card">
       {isLoading && <strong>Loading....</strong>}
       {!isLoading && (
         <>
-          <h3>{customerDetails.name}</h3>
-          <span>{customerDetails.email}</span>
-          <span>{customerDetails.balance}</span>
+          <h3>----Account Details----</h3>
+          <strong>
+            Name: <span>{customerDetails.name}</span>
+          </strong>
+          <br />
+          <strong>
+            Email: <span>{customerDetails.email}</span>
+          </strong>
+          <br />
+          <strong>
+            Balance: <span>{customerDetails.balance}</span>
+          </strong>
         </>
       )}
     </div>

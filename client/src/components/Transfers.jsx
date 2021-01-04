@@ -6,7 +6,7 @@ export default function Transfers() {
 
   const getTransactionsDetails = () => {
     axios
-      .get("http://localhost:5050/transfers")
+      .get("http://localhost:5050/transfers?limit=7")
       .then((res) => {
         console.log(res.data);
         setTransactionsDetails(res.data);
@@ -19,31 +19,34 @@ export default function Transfers() {
   }, []);
 
   return (
-    <div className="customers">
+    <div className="customer-table">
       {isLoading && <strong>Loading</strong>}
       {!isLoading && (
-        <table>
-          <thead>
-            <tr>
-              <th>From</th>
-              <th>To</th>
-              <th>Amount</th>
-              <th>Transaction_at</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactionsDetails.map((tran, i) => {
-              return (
-                <tr key={i}>
-                  <td>{tran.paidfrom}</td>
-                  <td>{tran.paidto}</td>
-                  <td>{tran.amount}</td>
-                  <td>{tran.transaction_at}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <>
+          <h2>Colored Table Header</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Amount</th>
+                <th>Transaction_at</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactionsDetails.map((tran, i) => {
+                return (
+                  <tr key={i}>
+                    <td>{tran.paidfrom}</td>
+                    <td>{tran.paidto}</td>
+                    <td>{tran.amount}</td>
+                    <td>{tran.transaction_at}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </>
       )}
     </div>
   );

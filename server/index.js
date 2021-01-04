@@ -25,7 +25,7 @@ client.connect((err) => {
 });
 
 // id_counter
-var count = 7;
+var count = 16;
 
 // Routes
 app.get("/customers", async (req, res) => {
@@ -52,13 +52,14 @@ app.get("/customers/:id", async (req, res) => {
 
 app.get("/transfers", async (req, res) => {
   try {
+    const limit = parseInt(req.query.limit);
     const {
       rows,
     } = await client.query(`SELECT table1."paidfrom", table2."paidto", table1."amount", table1."transaction_at" FROM
     (SELECT transfers."id", customers."name" as paidFrom, transfers."amount", transfers."transaction_at" FROM transfers JOIN customers ON customers."id"=transfers."paidFrom") as table1
     INNER JOIN
     (SELECT transfers."id", customers."name" as paidTo, transfers."amount", transfers."transaction_at" FROM transfers JOIN customers ON customers."id"=transfers."paidTo") as table2 ON
-    table1."id"=table2."id"
+    table1."id"=table2."id" order BY table1."transaction_at" DESC LIMIT ${limit}
     `);
     return res.json(rows);
   } catch (error) {

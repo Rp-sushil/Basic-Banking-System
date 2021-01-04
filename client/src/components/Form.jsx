@@ -9,7 +9,7 @@ export default function Form({ customersData, setMoneyTransfered }) {
     const amount = e.target[1].value;
     if (paidto === customerId) {
       e.preventDefault();
-      alert("Can not transfer money to yourself");
+      alert(":( You can not transfer money to yourself");
       return;
     }
     console.log(paidto, amount);
@@ -28,7 +28,11 @@ export default function Form({ customersData, setMoneyTransfered }) {
       .then((res) => {
         if (res.status === 200) {
           setMoneyTransfered(true);
+          alert(":) Money Succesfully Transfered");
+          e.target[1].value = "";
           console.log(res);
+        } else {
+          alert(":( something goes wrong");
         }
       })
       .catch((err) => console.log(err));
@@ -36,32 +40,34 @@ export default function Form({ customersData, setMoneyTransfered }) {
   };
 
   return (
-    <div>
+    <div className="showcase-form card">
+      <h2>Transfer Money To</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="customerNames">Transfer Money To:</label>
-
-        <select name="customerID" id="customerNames">
-          {customersData.map((customer, i) => {
-            return (
-              <option
-                key={customer.email + i}
-                value={customer.id}
-                disabled={parseInt(customer.id) === parseInt(customerId)}
-              >
-                {customer.name}
-              </option>
-            );
-          })}
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-        <br />
-        <label htmlFor="amountToPay">Amount</label>
-        <br />
-        <input type="number" id="amountTopay" name="amount" />
-        <input type="submit" value="Submit"></input>
+        <div className="form-control box">
+          <select name="customerID" id="customerNames">
+            {customersData.map((customer, i) => {
+              return (
+                <option
+                  key={customer.email + i}
+                  value={customer.id}
+                  disabled={parseInt(customer.id) === parseInt(customerId)}
+                >
+                  {customer.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="form-control">
+          <input
+            id="amountTopay"
+            type="number"
+            name="amount"
+            placeholder="Amount"
+            required
+          />
+        </div>
+        <input type="submit" value="Send" className="btn btn-primary" />
       </form>
     </div>
   );

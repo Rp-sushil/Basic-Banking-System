@@ -24,24 +24,25 @@ export default function Customers() {
 
   let { path, url } = useRouteMatch();
   return (
-    <div className="customers">
+    <section className="showcase">
       {isLoading && <strong>Loading</strong>}
       {!isLoading && (
-        <>
-          <h2>Customer</h2>
-          <ul>
-            {customersData.map((customer, i) => {
-              return (
-                <li key={customer.name + i}>
-                  <Link to={`${url}/${customer.id}`}>{customer.name}</Link>
-                </li>
-              );
-            })}
-          </ul>
+        <div className="container grid">
+          <div className="dropdown">
+            <h2>Transfer Money From</h2>
+            <button className="dropbtn btn">Customers</button>
+            <div className="dropdown-content">
+              {customersData.map((customer, i) => {
+                return (
+                  <Link key={customer.name + i} to={`${url}/${customer.id}`}>
+                    {customer.name}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
           <Switch>
-            <Route exact path={path}>
-              <h3>Please select a customer.</h3>
-            </Route>
+            <Route exact path={path}></Route>
             <Route path={`${path}/:customerId`}>
               <Customer
                 moneyTransfered={moneyTransfered}
@@ -53,8 +54,8 @@ export default function Customers() {
               />
             </Route>
           </Switch>
-        </>
+        </div>
       )}
-    </div>
+    </section>
   );
 }
