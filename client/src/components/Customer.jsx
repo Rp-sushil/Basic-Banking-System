@@ -8,7 +8,7 @@ export default function Customer({ moneyTransfered, setMoneyTransfered }) {
   const [isLoading, setIsLoading] = useState(true);
 
   const getCustomerDetails = () => {
-    axios.get(`http://localhost:5050/customers/${customerId}`).then((res) => {
+    axios.get(`/customers/${customerId}`).then((res) => {
       setCustomerDetails(res.data);
       setIsLoading(false);
     });

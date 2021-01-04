@@ -6,7 +6,7 @@ export default function Transfers() {
 
   const getTransactionsDetails = () => {
     axios
-      .get("http://localhost:5050/transfers?limit=7")
+      .get("/transfers?limit=7")
       .then((res) => {
         console.log(res.data);
         setTransactionsDetails(res.data);

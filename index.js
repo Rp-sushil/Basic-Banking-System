@@ -25,15 +25,13 @@ client.connect((err) => {
 });
 
 // id_counter
-var count = 16;
+var count = 20;
 
-// production setup
+// Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
+  // Set static folder
   app.use(express.static("client/build"));
 }
-app.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
 
 // Routes
 app.get("/customers", async (req, res) => {
@@ -112,6 +110,10 @@ app.patch("/transfers", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
   res.send({ to, from, amount });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 app.listen(process.env.PORT, () =>

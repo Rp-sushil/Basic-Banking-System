@@ -15,7 +15,7 @@ export default function Form({ customersData, setMoneyTransfered }) {
     console.log(paidto, amount);
     axios
       .patch(
-        "http://localhost:5050/transfers",
+        "/transfers",
         JSON.stringify({
           to: paidto,
           from: customerId,

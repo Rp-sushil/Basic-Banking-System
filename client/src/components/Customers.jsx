@@ -11,7 +11,7 @@ export default function Customers() {
 
   const getCustomersData = () => {
     axios
-      .get("http://localhost:5050/customers")
+      .get("/customers")
       .then((res) => {
         setCustomersData(res.data);
         setisLoading(false);
