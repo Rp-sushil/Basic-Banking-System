@@ -27,6 +27,14 @@ client.connect((err) => {
 // id_counter
 var count = 16;
 
+// production setup
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
 // Routes
 app.get("/customers", async (req, res) => {
   try {
