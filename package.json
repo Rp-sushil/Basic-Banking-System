@@ -1,19 +1,22 @@
 {
-  "name": "banksys",
+  "name": "server",
   "version": "1.0.0",
-  "description": "basic banking system app",
+  "description": "backend of basic banking system application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rp-sushil/Basic-Banking-System.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "sushil",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Rp-sushil/Basic-Banking-System/issues"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "pg": "^8.5.1"
   },
-  "homepage": "https://github.com/Rp-sushil/Basic-Banking-System#readme"
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }

@@ -1,0 +1,14 @@
+1, "Charlotte", "charlotte@gmail.com", 11000;
+2, "Liam", "liam@gmail.com", 12000;
+3, "Noah", "noah@gmail.com", 13000;
+4, "Emma", "emma@gmail.com", 14000;
+5, "William", "william@gmail.com", 15000;
+6, "Elijah", "elijah@gmail.com", 16000;
+7, "Sophia", "sophia@gmail.com", 17000;
+8, "Benjamin", "benjamin@gmail.com", 18000;
+9, "Amelia", "amelia@gmail.com", 19000;
+10, "Ethan", "Ethan@gmail.com", 20000;
+<------------------------------------------------------------------>
+1, 10, 1, 2000
+2, 9, 2, 1000
+3, 8, 3, 500
