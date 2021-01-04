@@ -1,0 +1,19 @@
+{
+  "name": "banksys",
+  "version": "1.0.0",
+  "description": "basic banking system app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rp-sushil/Basic-Banking-System.git"
+  },
+  "author": "sushil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rp-sushil/Basic-Banking-System/issues"
+  },
+  "homepage": "https://github.com/Rp-sushil/Basic-Banking-System#readme"
+}
